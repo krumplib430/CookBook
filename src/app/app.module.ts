@@ -8,12 +8,14 @@ import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RecipeListComponent} from './recipe-list/recipe-list.component';
+import { MainNavbarComponent } from './main-navbar/main-navbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    MainNavbarComponent
   ],
   imports: [
     BrowserModule,
