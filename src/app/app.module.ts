@@ -4,9 +4,8 @@ import {NgModule} from '@angular/core';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
-import {MatRadioModule} from '@angular/material/radio';
+
+import {MatComponentsModule} from './mat-components.module';
 
 import {environment} from '../environments/environment';
 
@@ -29,9 +28,7 @@ import {MainNavbarComponent} from './main-navbar/main-navbar.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatRadioModule
+    MatComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
