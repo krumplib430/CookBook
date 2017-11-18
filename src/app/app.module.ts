@@ -4,7 +4,6 @@ import {NgModule} from '@angular/core';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import {MatComponentsModule} from './mat-components.module';
 
 import {environment} from '../environments/environment';
 
@@ -35,8 +34,7 @@ import {RecipeListComponent} from './recipe-list/recipe-list.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    MatComponentsModule
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
