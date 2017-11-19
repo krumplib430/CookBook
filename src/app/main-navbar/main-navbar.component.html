@@ -6,10 +6,13 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/">Home</a>
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/recipe-list">My Recipes</a>
+        <a class="nav-link" routerLink="/recipe-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Find Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/my-recipes" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">My Recipes</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -19,8 +22,8 @@
             {{ user.email }}
           </button>
           <div ngbDropdownMenu class="dropdown-menu">
-            <a class="dropdown-item" href="#">My Recipes</a>
-            <a class="dropdown-item" href="#">Admin</a>
+            <a class="dropdown-item" routerLink="/settings">Settings</a>
+            <a class="dropdown-item" routerLink="/admin">Admin</a>
             <div class="dropdown-divider"></div>
             <a (click)="logout()" class="dropdown-item">Logout</a>
           </div>

@@ -18,8 +18,13 @@ import {RegisterComponent} from './register/register.component';
 import {RecipeComponent} from './recipe/recipe.component';
 import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
 import {RecipeListComponent} from './recipe-list/recipe-list.component';
+import {MyRecipesComponent} from './my-recipes/my-recipes.component';
 
 import {AuthService} from './auth.service';
+import {RegistrationService} from './registration.service';
+import {AuthGuardService} from './auth-guard.service';
+
+
 
 @NgModule({
   declarations: [
@@ -30,7 +35,8 @@ import {AuthService} from './auth.service';
     RegisterComponent,
     RecipeListComponent,
     RecipeComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    MyRecipesComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,9 @@ import {AuthService} from './auth.service';
     NgbModule.forRoot()
   ],
   providers: [
-    AuthService
+    AuthService,
+    RegistrationService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

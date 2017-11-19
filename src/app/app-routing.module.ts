@@ -6,13 +6,14 @@ import {RegisterComponent} from './register/register.component';
 import {RecipeListComponent} from './recipe-list/recipe-list.component';
 import {RecipeComponent} from './recipe/recipe.component';
 import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
+import {MyRecipesComponent} from './my-recipes/my-recipes.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'recipe-list', component: RecipeListComponent},
-  {path: 'recipe', component: RecipeComponent},
+  {path: 'my-recipes', component: MyRecipesComponent},
   {path: 'recipe-edit', component: RecipeEditComponent},
 ];
 

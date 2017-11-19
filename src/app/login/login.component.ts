@@ -16,8 +16,6 @@ export class LoginComponent {
 
   login() {
     console.log(this.loginData);
-    // this.afAuth.auth.createUserWithEmailAndPassword(this.loginData.email, this.loginData.password);
-
     this.authService.login(this.loginData.email, this.loginData.password);
   }
 }
