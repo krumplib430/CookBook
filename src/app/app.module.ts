@@ -6,6 +6,7 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {StoreModule} from '@ngrx/store';
 
 import {environment} from '../environments/environment';
 
@@ -24,7 +25,8 @@ import {AuthService} from './auth.service';
 import {RegistrationService} from './registration.service';
 import {AuthGuardService} from './auth-guard.service';
 
-
+import {INITIAL_APP_STATE} from './store/app-state';
+import {dummyReducer} from './store/reducers';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import {AuthGuardService} from './auth-guard.service';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    StoreModule.forRoot({ counter: dummyReducer }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

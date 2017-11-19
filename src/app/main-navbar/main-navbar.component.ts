@@ -1,5 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../auth.service';
+import {Store} from '@ngrx/store';
+import {AppState} from '../store/app-state';
 
 @Component({
   selector: 'main-navbar',
@@ -8,7 +10,8 @@ import {AuthService} from '../auth.service';
   encapsulation: ViewEncapsulation.None
 })
 export class MainNavbarComponent {
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, private store: Store<AppState>) {
+    store.subscribe(console.log);
   }
 
   logout() {
