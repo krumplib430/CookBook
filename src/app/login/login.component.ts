@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
-import {AuthData} from './auth-data';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {LoginData} from './auth-data';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,22 +8,16 @@ import {AuthData} from './auth-data';
   styleUrls: ['./login.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent{
-  authData = new AuthData();
+export class LoginComponent {
+  loginData = new LoginData();
 
-
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private authService: AuthService) {
   }
 
   login() {
-    console.log(this.authData);
-    // this.afAuth.auth.createUserWithEmailAndPassword(this.authData.email, this.authData.password);
+    console.log(this.loginData);
+    // this.afAuth.auth.createUserWithEmailAndPassword(this.loginData.email, this.loginData.password);
 
-    this.afAuth.auth.signInWithEmailAndPassword(this.authData.email, this.authData.password)
-      .then(x => {
-        console.log('sending email verification', x);
-        // this.afAuth.auth.currentUser.sendEmailVerification();
-      })
-      .catch(x => console.log('Unable to login', x));
+    this.authService.login(this.loginData.email, this.loginData.password);
   }
 }

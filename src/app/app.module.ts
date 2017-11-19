@@ -19,6 +19,8 @@ import {RecipeComponent} from './recipe/recipe.component';
 import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
 import {RecipeListComponent} from './recipe-list/recipe-list.component';
 
+import {AuthService} from './auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,9 @@ import {RecipeListComponent} from './recipe-list/recipe-list.component';
     AngularFireAuthModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

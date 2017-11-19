@@ -1,6 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
-import * as firebase from 'firebase';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'main-navbar',
@@ -9,13 +8,10 @@ import * as firebase from 'firebase';
   encapsulation: ViewEncapsulation.None
 })
 export class MainNavbarComponent {
-  user: firebase.User;
-
-  constructor(private afAuth: AngularFireAuth) {
-    this.afAuth.authState.subscribe(user => this.user = user);
+  constructor(public authService: AuthService) {
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.authService.logout();
   }
 }
