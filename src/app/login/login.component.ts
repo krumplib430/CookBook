@@ -3,7 +3,7 @@ import {LoginData} from './auth-data';
 import {AuthService} from '../auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'cb-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   encapsulation: ViewEncapsulation.None
