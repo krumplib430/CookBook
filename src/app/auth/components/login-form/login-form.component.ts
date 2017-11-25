@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import * as fromAuth from '../../reducers/auth';
-import * as auth from '../../actions/auth';
-import {Observable} from 'rxjs/Observable';
+import * as authState from '../../state';
+import * as authActions from '../../actions/auth';
 
 @Component({
   selector: 'cb-login-form',
@@ -18,11 +17,11 @@ export class LoginFormComponent {
     password: new FormControl('')
   });
 
-  constructor(private store: Store<fromAuth.State>) {
+  constructor(private store: Store<authState.State>) {
   }
 
   submit() {
     console.log(this.form.value);
-    this.store.dispatch(new auth.Login(this.form.value));
+    this.store.dispatch(new authActions.Login(this.form.value));
   }
 }

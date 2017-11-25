@@ -1,29 +1,9 @@
-import * as auth from '../actions/auth';
-import * as fromRoot from '../../reducers/index';
-import {UserData} from '../models/user-data';
-import {createSelector} from '@ngrx/store';
+import * as authActions from '../actions/auth';
+import * as authState from '../state';
 
-export interface AuthState {
-  loggedIn: boolean;
-  user: UserData;
-  pending: boolean;
-  error: string;
-}
-
-export interface State extends fromRoot.State {
-  auth: AuthState;
-}
-
-export const initialState: AuthState = {
-  loggedIn: false,
-  user: null,
-  pending: false,
-  error: null,
-}
-
-export function reducer(state: AuthState = initialState, action: auth.Actions) {
+export function reducer(state: authState.AuthState = authState.initialState, action: authActions.Actions) {
   switch (action.type) {
-    case auth.LOGIN: {
+    case authActions.LOGIN: {
       return {
         ...state,
         pending: true,
@@ -31,7 +11,7 @@ export function reducer(state: AuthState = initialState, action: auth.Actions) {
       };
     }
 
-    case auth.LOGIN_SUCCESS: {
+    case authActions.LOGIN_SUCCESS: {
       return {
         ...state,
         loggedIn: true,
@@ -41,7 +21,7 @@ export function reducer(state: AuthState = initialState, action: auth.Actions) {
       };
     }
 
-    case auth.LOGIN_FAILURE: {
+    case authActions.LOGIN_FAILURE: {
       return {
         ...state,
         loggedIn: false,
@@ -56,5 +36,3 @@ export function reducer(state: AuthState = initialState, action: auth.Actions) {
     }
   }
 }
-
-export const getAuthPending = createSelector((state: AuthState) => state.pending, pending => pending)

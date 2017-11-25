@@ -2,7 +2,6 @@ import {Action} from '@ngrx/store';
 import {LoginData} from '../models/login-data';
 import {UserData} from '../models/user-data';
 
-
 export const LOGIN = '[Auth] Login';
 export const LOGOUT = '[Auth] Logout';
 export const LOGIN_SUCCESS = '[Auth] Login Success';
