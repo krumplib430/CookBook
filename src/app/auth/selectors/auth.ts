@@ -1,4 +1,4 @@
-import {AuthState} from '../state/index';
+import {AuthState} from '../state/auth';
 import {createSelector} from '@ngrx/store';
 
 // TODO: rewrite to proper selector

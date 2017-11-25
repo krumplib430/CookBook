@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import * as authState from '../../state';
+import * as authState from '../../state/auth';
 import * as authActions from '../../actions/auth';
 
 @Component({
