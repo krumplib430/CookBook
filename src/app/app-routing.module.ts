@@ -5,11 +5,11 @@ import {RegisterComponent} from './register/register.component';
 import {RecipeListComponent} from './recipe-list/recipe-list.component';
 import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
 import {MyRecipesComponent} from './my-recipes/my-recipes.component';
-import {LoginFormComponent} from './auth/components/login-form.component';
+import {LoginPageComponent} from './auth/containers/login-page.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'login', component: LoginFormComponent},
+  {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'recipe-list', component: RecipeListComponent},
   {path: 'my-recipes', component: MyRecipesComponent},

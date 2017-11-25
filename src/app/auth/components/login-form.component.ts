@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import * as authState from '../state/auth';
 import * as authActions from '../actions/auth';
+import * as authSelectors from '../selectors/auth';
 
 @Component({
   selector: 'cb-login-form',
@@ -10,7 +11,7 @@ import * as authActions from '../actions/auth';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  pending$ = this.store.select('auth', 'pending');
+  pending$ = this.store.select(authSelectors.getAuthPending);
 
   form: FormGroup = new FormGroup({
     email: new FormControl(''),

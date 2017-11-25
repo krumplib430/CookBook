@@ -17,6 +17,7 @@ import {HomeComponent} from './home/home.component';
 import {MainNavbarComponent} from './main-navbar/main-navbar.component';
 import {LoginComponent} from './login/login.component';
 import {LoginFormComponent} from './auth/components/login-form.component';
+import {LoginPageComponent} from './auth/containers/login-page.component';
 import {RegisterComponent} from './register/register.component';
 import {RecipeComponent} from './recipe/recipe.component';
 import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
@@ -29,6 +30,7 @@ import {AuthGuardService} from './auth-guard.service';
 import {reducer} from './auth/reducers/auth';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
     RecipeComponent,
     RecipeEditComponent,
     MyRecipesComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
