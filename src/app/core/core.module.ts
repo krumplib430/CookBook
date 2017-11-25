@@ -1,27 +1,27 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
-import {LoginPageComponent} from './containers/login-page.component';
-import {LoginFormComponent} from './components/login-form.component';
+import {AppComponent} from './containers/app.component';
+import {NotFoundPageComponent} from './containers/not-found-page.component';
 
 export const COMPONENTS = [
-  LoginPageComponent,
-  LoginFormComponent
+  AppComponent,
+  NotFoundPageComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    RouterModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS
 })
-export class AuthModule {
+export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: AuthModule,
+      ngModule: CoreModule,
       providers: []
     };
   }
