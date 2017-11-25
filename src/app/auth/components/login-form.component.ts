@@ -1,9 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Store} from '@ngrx/store';
-import * as authState from '../state/auth';
-import * as authActions from '../actions/auth';
-import * as authSelectors from '../selectors/auth';
+import {LoginData} from '../models/login-data';
+
 
 @Component({
   selector: 'cb-login-form',
@@ -11,18 +9,17 @@ import * as authSelectors from '../selectors/auth';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  pending$ = this.store.select(authSelectors.getAuthPending);
-
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   });
 
-  constructor(private store: Store<authState.State>) {
-  }
+  @Output() submitted = new EventEmitter<LoginData>();
+  @Input() pending: boolean;
 
   submit() {
-    console.log(this.form.value);
-    this.store.dispatch(new authActions.Login(this.form.value));
+    if (this.form.valid) {
+      this.submitted.emit(this.form.value);
+    }
   }
 }
