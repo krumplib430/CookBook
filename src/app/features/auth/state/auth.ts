@@ -1,5 +1,5 @@
 import {UserData} from '../models/user-data';
-import * as fromRoot from '../../../reducers';
+import * as rootState from '../../../state/app';
 
 export interface AuthState {
   loggedIn: boolean;
@@ -8,7 +8,7 @@ export interface AuthState {
   error: string;
 }
 
-export interface State extends fromRoot.State {
+export interface State extends rootState.State {
   auth: AuthState;
 }
 

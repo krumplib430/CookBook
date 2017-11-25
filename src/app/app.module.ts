@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, Routes} from '@angular/router';
-import {StoreModule} from '@ngrx/store';
 import {AngularFireModule} from 'angularfire2'; // TODO: move firebase related imports to separate module
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {environment} from '../environments/environment';
-import {reducer} from './features/auth/reducers/auth';
+import {StoreModule} from '@ngrx/store';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {reducers} from './reducers/app';
 import {CoreModule} from './features/core/core.module';
 import {AuthModule} from './features/auth/auth.module';
 import {AppComponent} from './features/core/containers/app.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    StoreModule.forRoot({auth: reducer}),
+    StoreModule.forRoot(reducers),
+    StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument({maxAge: 25}),
     CoreModule.forRoot(),
     AuthModule.forRoot()
