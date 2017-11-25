@@ -1,5 +1,5 @@
 import {UserData} from '../models/user-data';
-import * as fromRoot from '../../reducers';
+import * as fromRoot from '../../../reducers';
 
 export interface AuthState {
   loggedIn: boolean;
