@@ -5,7 +5,7 @@ import {RegisterComponent} from './register/register.component';
 import {RecipeListComponent} from './recipe-list/recipe-list.component';
 import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
 import {MyRecipesComponent} from './my-recipes/my-recipes.component';
-import {LoginFormComponent} from './auth/components/login-form/login-form.component';
+import {LoginFormComponent} from './auth/components/login-form.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

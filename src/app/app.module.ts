@@ -16,7 +16,7 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {MainNavbarComponent} from './main-navbar/main-navbar.component';
 import {LoginComponent} from './login/login.component';
-import {LoginFormComponent} from './auth/components/login-form/login-form.component';
+import {LoginFormComponent} from './auth/components/login-form.component';
 import {RegisterComponent} from './register/register.component';
 import {RecipeComponent} from './recipe/recipe.component';
 import {RecipeEditComponent} from './recipe-edit/recipe-edit.component';
