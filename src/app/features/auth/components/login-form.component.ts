@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {LoginData} from '../models/login-data';
+import * as authModels from '../models/auth';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginFormComponent {
     password: new FormControl('')
   });
 
-  @Output() submitted = new EventEmitter<LoginData>();
+  @Output() submitted = new EventEmitter<authModels.LoginData>();
   @Input() pending: boolean;
 
   submit() {

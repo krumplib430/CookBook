@@ -1,8 +1,8 @@
-import {AuthState} from '../state/auth';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
+import * as authState from '../state/auth';
 
-export const getAuthState = createFeatureSelector<AuthState>('auth');
-export const getAuthPending = createSelector(getAuthState, (state: AuthState) => state.pending);
+export const getAuthState = createFeatureSelector<authState.AuthState>('auth');
+export const getAuthPending = createSelector(getAuthState, (state: authState.AuthState) => state.pending);
 
 
 

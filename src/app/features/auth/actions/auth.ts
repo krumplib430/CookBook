@@ -1,6 +1,5 @@
 import {Action} from '@ngrx/store';
-import {LoginData} from '../models/login-data';
-import {UserData} from '../models/user-data';
+import * as authModels from '../models/auth';
 
 export const LOGIN = '[Auth] Login';
 export const LOGOUT = '[Auth] Logout';
@@ -10,7 +9,7 @@ export const LOGIN_FAILURE = '[Auth] Login Failure';
 export class Login implements Action {
   readonly type = LOGIN;
 
-  constructor(public payload: LoginData) {
+  constructor(public payload: authModels.LoginData) {
   }
 }
 
@@ -21,7 +20,7 @@ export class Logout implements Action {
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
 
-  constructor(public payload: UserData) {
+  constructor(public payload: authModels.UserData) {
   }
 }
 

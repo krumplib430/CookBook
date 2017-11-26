@@ -3,9 +3,9 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
-import {reducer} from './reducers/auth';
 import {LoginPageComponent} from './containers/login-page.component';
 import {LoginFormComponent} from './components/login-form.component';
+import * as authReducers from './reducers/auth';
 
 export const COMPONENTS = [
   LoginPageComponent,
@@ -20,7 +20,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('auth', reducer),
+    StoreModule.forFeature('auth', authReducers.reducer),
     ReactiveFormsModule
   ],
   declarations: COMPONENTS,

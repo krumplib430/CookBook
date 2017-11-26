@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {LoginData} from '../models/login-data';
+import * as authModels from '../models/auth';
 import * as authState from '../state/auth';
 import * as authActions from '../actions/auth';
 import * as authSelectors from '../selectors/auth';
@@ -16,7 +16,7 @@ export class LoginPageComponent {
     this.pending$ = store.select(authSelectors.getAuthPending);
   }
 
-  onSubmit($event: LoginData) {
+  onSubmit($event: authModels.LoginData) {
     console.log($event);
     this.store.dispatch(new authActions.Login($event));
   }

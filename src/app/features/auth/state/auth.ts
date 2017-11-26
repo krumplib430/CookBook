@@ -1,9 +1,9 @@
-import {UserData} from '../models/user-data';
+import * as authModels from '../models/auth';
 import * as rootState from '../../../state/app';
 
 export interface AuthState {
   loggedIn: boolean;
-  user: UserData;
+  user: authModels.UserData;
   pending: boolean;
   error: string;
 }

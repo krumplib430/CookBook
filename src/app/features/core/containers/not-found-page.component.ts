@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'cb-not-found-page',
@@ -6,11 +6,5 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./not-found-page.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NotFoundPageComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class NotFoundPageComponent {
 }
