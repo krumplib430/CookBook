@@ -11,4 +11,8 @@ export class AuthService {
   login(loginData: authModels.LoginData) {
     return Observable.fromPromise(this.afAuth.auth.signInWithEmailAndPassword(loginData.email, loginData.password));
   }
+
+  logout() {
+    return Observable.fromPromise(this.afAuth.auth.signOut());
+  }
 }

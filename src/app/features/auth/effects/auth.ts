@@ -27,7 +27,15 @@ export class AuthEffects {
   @Effect({dispatch: false})
   loginSuccess$ = this.actions$
     .ofType(authActions.LOGIN_SUCCESS)
-    .do(() => this.router.navigate(['/']));
+    .do(() => this.router.navigate(['/'])
+    );
+
+  @Effect({dispatch: false})
+  logout$ = this.actions$
+    .ofType(authActions.LOGOUT)
+    .exhaustMap(() => this.authService.logout())
+    .do(() => this.router.navigate(['/login'])
+    );
 
   constructor(private actions$: Actions, private authService: AuthService, private router: Router) {
   }
