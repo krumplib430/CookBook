@@ -1,2 +1,5 @@
-<cb-login-form [pending]="pending$ | async" (submitted)="onSubmit($event)">
+<cb-login-form
+  [pending]="pending$ | async"
+  [error]="error$ | async"
+  (submitted)="onSubmit($event)">
 </cb-login-form>

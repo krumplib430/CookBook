@@ -11,9 +11,11 @@ import * as authSelectors from '../selectors/auth';
 })
 export class LoginPageComponent {
   pending$: Store<boolean>;
+  error$: Store<string>;
 
   constructor(private store: Store<authState.State>) {
     this.pending$ = store.select(authSelectors.getAuthPending);
+    this.error$ = store.select(authSelectors.getAuthError);
   }
 
   onSubmit($event: authModels.LoginData) {

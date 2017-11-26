@@ -16,6 +16,7 @@ export class LoginFormComponent {
 
   @Output() submitted = new EventEmitter<authModels.LoginData>();
   @Input() pending: boolean;
+  @Input() error: string;
 
   submit() {
     if (this.form.valid) {
