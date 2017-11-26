@@ -4,5 +4,6 @@ export interface LoginData {
 }
 
 export interface UserData {
+  uid: string;
   email: string;
 }

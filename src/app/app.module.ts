@@ -6,6 +6,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {environment} from '../environments/environment';
 import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {CustomRouterStateSerializer} from './services/router-state-serializer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
@@ -28,12 +29,13 @@ const routes: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
     StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument({maxAge: 25}),
     CoreModule.forRoot(),
     AuthModule.forRoot()
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }],
+  providers: [{provide: RouterStateSerializer, useClass: CustomRouterStateSerializer}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

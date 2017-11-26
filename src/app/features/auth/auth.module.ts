@@ -3,8 +3,11 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {AuthEffects} from './effects/auth';
 import {LoginPageComponent} from './containers/login-page.component';
 import {LoginFormComponent} from './components/login-form.component';
+import {AuthService} from './services/auth';
 import * as authReducers from './reducers/auth';
 
 export const COMPONENTS = [
@@ -19,9 +22,10 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('auth', authReducers.reducer),
-    ReactiveFormsModule
+    EffectsModule.forFeature([AuthEffects])
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS
@@ -30,7 +34,7 @@ export class AuthModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AuthModule,
-      providers: []
+      providers: [AuthService]
     };
   }
 }
