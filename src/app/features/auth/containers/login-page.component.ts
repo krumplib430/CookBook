@@ -7,7 +7,7 @@ import * as authSelectors from '../selectors/auth';
 
 @Component({
   selector: 'cb-login-page',
-  templateUrl: './login-page.component.html'
+  templateUrl: './login-page.component.html',
 })
 export class LoginPageComponent {
   pending$: Store<boolean>;

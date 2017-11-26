@@ -13,12 +13,14 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {reducers} from './reducers/app';
 import {CoreModule} from './features/core/core.module';
 import {AuthModule} from './features/auth/auth.module';
+import {RecipeModule} from './features/recipe/recipe.module';
 import {AppComponent} from './features/core/containers/app.component';
 import {NotFoundPageComponent} from './features/core/containers/not-found-page.component';
 
+
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: '**', component: NotFoundPageComponent}
+  {path: '', redirectTo: '/recipes', pathMatch: 'full'},
+  {path: '**', component: NotFoundPageComponent},
 ];
 
 @NgModule({
@@ -33,10 +35,11 @@ const routes: Routes = [
     StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument({maxAge: 25}),
     CoreModule.forRoot(),
-    AuthModule.forRoot()
+    AuthModule.forRoot(),
+    RecipeModule.forRoot(),
   ],
   providers: [{provide: RouterStateSerializer, useClass: CustomRouterStateSerializer}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

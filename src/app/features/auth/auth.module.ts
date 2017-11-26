@@ -10,7 +10,7 @@ import {LoginFormComponent} from './components/login-form.component';
 import {AuthService} from './services/auth';
 import * as authReducers from './reducers/auth';
 
-export const COMPONENTS = [
+const COMPONENTS = [
   LoginPageComponent,
   LoginFormComponent
 ];
@@ -25,16 +25,16 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('auth', authReducers.reducer),
-    EffectsModule.forFeature([AuthEffects])
+    EffectsModule.forFeature([AuthEffects]),
   ],
   declarations: COMPONENTS,
-  exports: COMPONENTS
+  exports: COMPONENTS,
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AuthModule,
-      providers: [AuthService]
+      providers: [AuthService],
     };
   }
 }

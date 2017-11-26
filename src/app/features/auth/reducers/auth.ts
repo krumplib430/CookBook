@@ -7,7 +7,14 @@ export function reducer(state: authState.AuthState = authState.initialState, act
       return {
         ...state,
         pending: true,
-        error: null,
+      };
+    }
+
+    case authActions.LOGOUT: {
+      return {
+        ...state,
+        user: null,
+        loggedIn: false,
       };
     }
 

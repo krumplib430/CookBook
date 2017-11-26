@@ -11,7 +11,7 @@ import * as authModels from '../models/auth';
 export class LoginFormComponent {
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
-    password: new FormControl('')
+    password: new FormControl(''),
   });
 
   @Output() submitted = new EventEmitter<authModels.LoginData>();

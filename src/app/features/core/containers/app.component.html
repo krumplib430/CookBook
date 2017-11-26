@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div>
+  <button *ngIf="loggedIn$ | async" type="button" (click)="logout()" >Logout</button>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
