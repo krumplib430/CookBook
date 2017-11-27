@@ -15,4 +15,8 @@ export class AuthService {
   logout() {
     return Observable.fromPromise(this.afAuth.auth.signOut());
   }
+
+  getAuthState() {
+    return this.afAuth.authState;
+  }
 }

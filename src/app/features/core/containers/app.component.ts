@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('app initializez');
+    this.store.dispatch(new authActions.CheckLoginState());
   }
 
   logout() {

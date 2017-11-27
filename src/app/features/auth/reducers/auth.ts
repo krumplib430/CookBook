@@ -3,6 +3,14 @@ import * as authState from '../state/auth';
 
 export function reducer(state: authState.AuthState = authState.initialState, action: authActions.Actions) {
   switch (action.type) {
+    case authActions.INIT_LOGIN_STATE: {
+      return {
+        ...state,
+        loggedIn: true,
+        user: action.payload,
+      };
+    }
+
     case authActions.LOGIN: {
       return {
         ...state,

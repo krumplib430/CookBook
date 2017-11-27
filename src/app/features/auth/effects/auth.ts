@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/exhaustMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/take';
 import {of} from 'rxjs/observable/of';
 import * as authActions from '../actions/auth';
 
@@ -30,9 +31,20 @@ export class AuthEffects {
       .map(authResponse => new authActions.LoginRedirect()));
 
   @Effect({dispatch: false})
-  loginRedirect = this.actions$
+  loginRedirect$ = this.actions$
     .ofType(authActions.LOGIN_REDIRECT)
     .do(() => this.router.navigate(['/login']));
+
+  @Effect()
+  checkLoginState$ = this.actions$
+    .ofType(authActions.CHECK_LOGIN_STATE)
+    .exhaustMap(() => this.authService.getAuthState().take(1)
+      .map(authState => {
+        if (authState) {
+          return new authActions.InitLoginState({uid: authState.uid, email: authState.email});
+        }
+        return new authActions.NoOp();
+      }));
 
   constructor(private actions$: Actions, private authService: AuthService, private router: Router) {
   }
