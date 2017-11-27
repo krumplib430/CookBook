@@ -8,6 +8,7 @@ import {AuthEffects} from './effects/auth';
 import {LoginPageComponent} from './containers/login-page.component';
 import {LoginFormComponent} from './components/login-form.component';
 import {AuthService} from './services/auth';
+import {AuthGuard} from './services/auth-guard';
 import * as authReducers from './reducers/auth';
 
 const COMPONENTS = [
@@ -34,7 +35,7 @@ export class AuthModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AuthModule,
-      providers: [AuthService],
+      providers: [AuthService, AuthGuard],
     };
   }
 }

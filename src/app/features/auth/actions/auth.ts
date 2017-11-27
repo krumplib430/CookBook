@@ -5,6 +5,7 @@ export const LOGIN = '[Auth] Login';
 export const LOGOUT = '[Auth] Logout';
 export const LOGIN_SUCCESS = '[Auth] Login Success';
 export const LOGIN_FAILURE = '[Auth] Login Failure';
+export const LOGIN_REDIRECT = '[Auth] Login Redirect';
 
 export class Login implements Action {
   readonly type = LOGIN;
@@ -31,8 +32,13 @@ export class LoginFailure implements Action {
   }
 }
 
+export class LoginRedirect implements Action {
+  readonly type = LOGIN_REDIRECT;
+}
+
 export type Actions =
   | Login
   | Logout
   | LoginSuccess
-  | LoginFailure;
+  | LoginFailure
+  | LoginRedirect;

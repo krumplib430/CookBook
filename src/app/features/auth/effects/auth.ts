@@ -23,11 +23,16 @@ export class AuthEffects {
     .ofType(authActions.LOGIN_SUCCESS)
     .do(() => this.router.navigate(['/']));
 
-  @Effect({dispatch: false})
+  @Effect()
   logout$ = this.actions$
     .ofType(authActions.LOGOUT)
     .exhaustMap(() => this.authService.logout()
-      .do(() => this.router.navigate(['/login'])));
+      .map(authResponse => new authActions.LoginRedirect()));
+
+  @Effect({dispatch: false})
+  loginRedirect = this.actions$
+    .ofType(authActions.LOGIN_REDIRECT)
+    .do(() => this.router.navigate(['/login']));
 
   constructor(private actions$: Actions, private authService: AuthService, private router: Router) {
   }
