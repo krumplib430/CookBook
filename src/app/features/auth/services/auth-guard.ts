@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 import * as authState from '../state/auth';
 import * as authActions from '../actions/auth';
 
-
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private store: Store<authState.State>, private afAuth: AngularFireAuth) {
@@ -16,8 +15,8 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.afAuth.authState
-      .map(state => {
-        if (!state) {
+      .map(afAuthState => {
+        if (!afAuthState) {
           this.store.dispatch(new authActions.LoginRedirect());
           return false;
         }
