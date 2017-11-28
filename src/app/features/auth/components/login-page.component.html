@@ -10,6 +10,6 @@
            placeholder="Password">
   </div>
   <button type="submit" class="btn btn-primary">Login</button>
-  <p *ngIf="error" style="color: red">{{ error }}</p>
-  <p *ngIf="pending">Checking...</p>
+  <p *ngIf="error$ | async" style="color: red">{{ error$ | async }}</p>
+  <p *ngIf="pending$ | async">Checking...</p>
 </form>

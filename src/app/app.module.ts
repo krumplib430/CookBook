@@ -14,8 +14,8 @@ import {reducers} from './reducers/app';
 import {CoreModule} from './features/core/core.module';
 import {AuthModule} from './features/auth/auth.module';
 import {RecipeModule} from './features/recipe/recipe.module';
-import {AppComponent} from './features/core/containers/app.component';
-import {NotFoundPageComponent} from './features/core/containers/not-found-page.component';
+import {AppComponent} from './features/core/components/app.component';
+import {NotFoundPageComponent} from './features/core/components/not-found-page.component';
 
 
 const routes: Routes = [

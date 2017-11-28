@@ -38,10 +38,10 @@ export class AuthEffects {
   @Effect()
   checkLoginState$ = this.actions$
     .ofType(authActions.CHECK_LOGIN_STATE)
-    .exhaustMap(() => this.authService.getAuthState().take(1)
-      .map(authState => {
-        if (authState) {
-          return new authActions.InitLoginState({uid: authState.uid, email: authState.email});
+    .exhaustMap(() => this.authService.userData$.take(1)
+      .map(userData => {
+        if (userData) {
+          return new authActions.InitLoginState(userData);
         }
         return new authActions.NoOp();
       }));

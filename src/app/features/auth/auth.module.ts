@@ -5,15 +5,14 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthEffects} from './effects/auth';
-import {LoginPageComponent} from './containers/login-page.component';
-import {LoginFormComponent} from './components/login-form.component';
+import {LoginPageComponent} from './components/login-page.component';
 import {AuthService} from './services/auth';
 import {AuthGuard} from './services/auth-guard';
 import * as authReducers from './reducers/auth';
 
 const COMPONENTS = [
   LoginPageComponent,
-  LoginFormComponent
+  LoginPageComponent
 ];
 
 const routes: Routes = [
