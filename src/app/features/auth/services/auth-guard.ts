@@ -3,11 +3,10 @@ import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {AuthService} from './auth';
-import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 import * as authState from '../state/auth';
 import * as authActions from '../actions/auth';
-
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -15,14 +14,14 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.authService.userData$
-      .map(userData => {
-        if (!userData) {
+    return this.authService.authenticated$
+      .first()
+      .map(authenticated => {
+        if (!authenticated) {
           this.store.dispatch(new authActions.LoginRedirect());
           return false;
         }
         return true;
-      })
-      .take(1);
+      });
   }
 }

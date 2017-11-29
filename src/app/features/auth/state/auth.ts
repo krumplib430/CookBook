@@ -13,7 +13,7 @@ export interface State extends rootState.State {
 }
 
 export const initialState: AuthState = {
-  loggedIn: false,
+  loggedIn: null,
   user: null,
   pending: false,
   error: null,

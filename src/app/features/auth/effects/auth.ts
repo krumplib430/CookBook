@@ -4,9 +4,10 @@ import {Router} from '@angular/router';
 import {AuthService} from '../services/auth';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/exhaustMap';
+import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/first';
 import {of} from 'rxjs/observable/of';
 import * as authActions from '../actions/auth';
 
@@ -28,7 +29,7 @@ export class AuthEffects {
   logout$ = this.actions$
     .ofType(authActions.LOGOUT)
     .exhaustMap(() => this.authService.logout()
-      .map(authResponse => new authActions.LoginRedirect()));
+      .map(() => new authActions.LoginRedirect()));
 
   @Effect({dispatch: false})
   loginRedirect$ = this.actions$
@@ -38,12 +39,13 @@ export class AuthEffects {
   @Effect()
   checkLoginState$ = this.actions$
     .ofType(authActions.CHECK_LOGIN_STATE)
-    .exhaustMap(() => this.authService.userData$.take(1)
+    .switchMap(() => this.authService.userData$
+      .first()
       .map(userData => {
         if (userData) {
           return new authActions.InitLoginState(userData);
         }
-        return new authActions.NoOp();
+        return new authActions.InitLoginState(null);
       }));
 
   constructor(private actions$: Actions, private authService: AuthService, private router: Router) {
