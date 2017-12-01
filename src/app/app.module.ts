@@ -13,9 +13,11 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {reducers} from './reducers/app';
 import {CoreModule} from './features/core/core.module';
 import {AuthModule} from './features/auth/auth.module';
+import {RegistrationModule} from "./features/registration/registration.module";
 import {RecipeModule} from './features/recipe/recipe.module';
 import {AppComponent} from './features/core/components/app.component';
 import {NotFoundPageComponent} from './features/core/components/not-found-page.component';
+
 
 
 const routes: Routes = [
@@ -36,6 +38,7 @@ const routes: Routes = [
     StoreDevtoolsModule.instrument({maxAge: 25}),
     CoreModule.forRoot(),
     AuthModule.forRoot(),
+    RegistrationModule.forRoot(),
     RecipeModule.forRoot(),
   ],
   providers: [{provide: RouterStateSerializer, useClass: CustomRouterStateSerializer}],

@@ -11,7 +11,6 @@ import {AuthGuard} from './services/auth-guard';
 import * as authReducers from './reducers/auth';
 
 const COMPONENTS = [
-  LoginPageComponent,
   LoginPageComponent
 ];
 
