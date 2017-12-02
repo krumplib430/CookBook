@@ -1,3 +1,7 @@
+<mat-toolbar *ngIf="loggedIn$ | async" color="primary">
+  <span>Cook Book</span>
+  <button mat-button>Sign-up</button>
+</mat-toolbar>
 <div>
   <button *ngIf="loggedIn$ | async" type="button" (click)="logout()" >Logout</button>
 </div>

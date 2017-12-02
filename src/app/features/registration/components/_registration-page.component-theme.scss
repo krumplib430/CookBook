@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+@mixin registration-page-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .top-div {
+    background-color: mat-color($primary);
+  }
+}
