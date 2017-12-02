@@ -2,6 +2,8 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MaterialModule} from '../material/material.module';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthEffects} from './effects/auth';
@@ -25,6 +27,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     StoreModule.forFeature('auth', authReducers.reducer),
     EffectsModule.forFeature([AuthEffects]),
+    MaterialModule,
+    FlexLayoutModule,
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,

@@ -8,6 +8,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/debounceTime';
 import {of} from 'rxjs/observable/of';
 import * as authActions from '../actions/auth';
 
@@ -16,6 +17,7 @@ export class AuthEffects {
   @Effect()
   login$ = this.actions$
     .ofType(authActions.LOGIN)
+    .debounceTime(800)
     .exhaustMap((action: authActions.Login) => this.authService.login(action.payload)
       .map(authResponse => new authActions.LoginSuccess({uid: authResponse.uid, email: authResponse.email}))
       .catch(error => of(new authActions.LoginFailure(error.message))));

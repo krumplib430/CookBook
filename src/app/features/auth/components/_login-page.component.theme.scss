@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+@mixin login-page-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .top-div {
+    background-color: mat-color($primary);
+  }
+
+  .form-error {
+    color: mat-color($warn);
+  }
+}

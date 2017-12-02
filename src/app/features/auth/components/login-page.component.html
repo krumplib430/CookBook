@@ -1,15 +1,36 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <h2>Please login</h2>
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <input type="email" formControlName="email" class="form-control" name="email" id="email" placeholder="Enter email">
+<div class="top-div"></div>
+
+<div fxLayout="row" fxLayoutAlign="center">
+  <div class="card" fxFlex="40%" fxFlex.lt-md="90%">
+    <mat-card>
+      <mat-card-title>Please Login</mat-card-title>
+      <mat-card-subtitle *ngIf="error$ | async">
+        <p class="form-error">{{ error$ | async }}</p>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <form *ngIf="!(pending$ | async)" [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field fxFlex="100%">
+            <input matInput type="email" formControlName="email" placeholder="Email" [errorStateMatcher]="errorStateMatcher">
+            <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="form.get('email').hasError('required')">
+              Email is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field fxFlex="100%">
+            <input matInput type="password" formControlName="password" placeholder="Password" [errorStateMatcher]="errorStateMatcher">
+            <mat-error *ngIf="form.get('password').hasError('required')">
+              Password is required
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button type="submit" color="accent" [disabled]="form.invalid">Login</button>
+          <button mat-button type="button" color="primary">Sign-up</button>
+        </form>
+        <div fxLayout="row" fxLayoutAlign="center">
+          <mat-progress-spinner *ngIf="pending$ | async" fxFlexAlign="center" mode="indeterminate"></mat-progress-spinner>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" formControlName="password" class="form-control" name="password" id="password"
-           placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
-  <p *ngIf="error$ | async" style="color: red">{{ error$ | async }}</p>
-  <p *ngIf="pending$ | async">Checking...</p>
-</form>
+</div>

@@ -1,5 +1,6 @@
 @import '~@angular/material/theming';
-@import "app/features/registration/components/registration-page.component-theme";
+@import "app/features/registration/components/registration-page.component.theme";
+@import "app/features/auth/components/login-page.component.theme";
 
 @include mat-core();
 
@@ -11,3 +12,4 @@ $cb-theme: mat-light-theme($cb-primary, $cb-accent, $cb-warn);
 
 @include angular-material-theme($cb-theme);
 @include registration-page-theme($cb-theme);
+@include login-page-theme($cb-theme);
