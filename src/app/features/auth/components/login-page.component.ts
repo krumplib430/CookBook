@@ -3,9 +3,9 @@ import {FormGroup, FormBuilder, Validators, NgForm, FormControl, FormGroupDirect
 import {ErrorStateMatcher} from '@angular/material/core';
 import {Store} from '@ngrx/store';
 import {FormErrorStateMatcher} from '../../../shared/form-error-state-matcher';
-import * as authState from '../state/auth';
-import * as authActions from '../actions/auth';
-import * as authSelectors from '../selectors/auth';
+import * as authState from '../auth.state';
+import * as authActions from '../auth.actions';
+import * as authSelectors from '../auth.selectors';
 
 @Component({
   selector: 'cb-login-page',

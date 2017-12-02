@@ -11,7 +11,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {CustomRouterStateSerializer} from './services/router-state-serializer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {reducers} from './reducers/app';
+import {reducers} from './app.reducers';
 import {CoreModule} from './features/core/core.module';
 import {AuthModule} from './features/auth/auth.module';
 import {RegistrationModule} from './features/registration/registration.module';

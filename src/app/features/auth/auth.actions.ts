@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import * as authModels from '../models/auth';
+import * as authModels from './auth.models';
 
 export const CHECK_LOGIN_STATE = '[Auth] Check Login Status';
 export const INIT_LOGIN_STATE = '[Auth] Init Login Status';

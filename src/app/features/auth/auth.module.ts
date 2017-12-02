@@ -6,11 +6,11 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from '../../material/material.module';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
-import {AuthEffects} from './effects/auth';
+import {AuthEffects} from './auth.effects';
 import {LoginPageComponent} from './components/login-page.component';
 import {AuthService} from './services/auth';
 import {AuthGuard} from './services/auth-guard';
-import * as authReducers from './reducers/auth';
+import * as authReducers from './auth.reducers';
 
 const COMPONENTS = [
   LoginPageComponent

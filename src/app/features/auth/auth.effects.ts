@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect} from '@ngrx/effects';
 import {Router} from '@angular/router';
-import {AuthService} from '../services/auth';
+import {AuthService} from './services/auth';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/exhaustMap';
 import 'rxjs/add/operator/switchMap';
@@ -10,7 +10,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/debounceTime';
 import {of} from 'rxjs/observable/of';
-import * as authActions from '../actions/auth';
+import * as authActions from './auth.actions';
 
 @Injectable()
 export class AuthEffects {

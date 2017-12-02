@@ -1,5 +1,5 @@
-import * as authActions from '../actions/auth';
-import * as authState from '../state/auth';
+import * as authActions from './auth.actions';
+import * as authState from './auth.state';
 
 export function reducer(state: authState.AuthState = authState.initialState, action: authActions.Actions) {
   switch (action.type) {

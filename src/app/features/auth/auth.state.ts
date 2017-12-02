@@ -1,5 +1,5 @@
-import * as authModels from '../models/auth';
-import * as rootState from '../../../state/app.state';
+import * as authModels from './auth.models';
+import * as rootState from '../../app.state';
 
 export interface AuthState {
   loggedIn: boolean;

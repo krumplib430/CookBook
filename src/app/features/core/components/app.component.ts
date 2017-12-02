@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
-import * as rootState from '../../../state/app.state';
-import * as authSelectors from '../../auth/selectors/auth';
-import * as authActions from '../../auth/actions/auth';
+import * as rootState from '../../../app.state';
+import * as authSelectors from '../../auth/auth.selectors';
+import * as authActions from '../../auth/auth.actions';
 
 @Component({
   selector: 'cb-root',
