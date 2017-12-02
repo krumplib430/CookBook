@@ -1,6 +1,11 @@
 import {RouterReducerState} from '@ngrx/router-store';
-import {RouterState} from './router';
+import {Params} from '@angular/router';
 
 export interface State {
   router: RouterReducerState<RouterState>;
+}
+
+export interface RouterState {
+  url: string;
+  queryParams: Params;
 }

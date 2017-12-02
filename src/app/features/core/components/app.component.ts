@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
-import * as rootState from '../../../state/app';
+import * as rootState from '../../../state/app.state';
 import * as authSelectors from '../../auth/selectors/auth';
 import * as authActions from '../../auth/actions/auth';
 

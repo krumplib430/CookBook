@@ -7,7 +7,6 @@ import * as authState from '../state/auth';
 import * as authActions from '../actions/auth';
 import * as authSelectors from '../selectors/auth';
 
-
 @Component({
   selector: 'cb-login-page',
   templateUrl: './login-page.component.html',
