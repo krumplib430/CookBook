@@ -3,9 +3,10 @@ import {FormGroup, FormBuilder, Validators, NgForm, FormControl, FormGroupDirect
 import {ErrorStateMatcher} from '@angular/material/core';
 import {Store} from '@ngrx/store';
 import {FormErrorStateMatcher} from '../../../shared/form-error-state-matcher';
-import * as authState from '../auth.state';
+import {State} from '../../../app.state';
 import * as authActions from '../auth.actions';
 import * as authSelectors from '../auth.selectors';
+import * as routerActions from '../../../router/router.actions';
 
 @Component({
   selector: 'cb-login-page',
@@ -19,7 +20,7 @@ export class LoginPageComponent {
   form: FormGroup;
   errorStateMatcher = new FormErrorStateMatcher();
 
-  constructor(private store: Store<authState.State>, private formBuilder: FormBuilder) {
+  constructor(private store: Store<State>, private formBuilder: FormBuilder) {
     this.pending$ = store.select(authSelectors.getAuthPending);
     this.error$ = store.select(authSelectors.getAuthError);
 
@@ -37,5 +38,11 @@ export class LoginPageComponent {
     if (this.form.valid) {
       this.store.dispatch(new authActions.Login(this.form.value));
     }
+  }
+
+  signUp() {
+    this.store.dispatch(new routerActions.Go({
+      path: ['/register']
+    }));
   }
 }

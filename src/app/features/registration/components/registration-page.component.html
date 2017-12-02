@@ -3,20 +3,38 @@
 <div fxLayout="row" fxLayoutAlign="center">
   <div class="card" fxFlex="40%" fxFlex.lt-md="90%">
     <mat-card>
-      <mat-card-title>Sign Up</mat-card-title>
+      <mat-card-title>Register</mat-card-title>
+      <mat-card-subtitle *ngIf="error$ | async">
+        <p class="form-error">{{ error$ | async }}</p>
+      </mat-card-subtitle>
       <mat-card-content>
-        <form [formGroup]="form" fxLayout="column">
+        <form *ngIf="!(pending$ | async)" [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="10px">
           <mat-form-field fxFlex="100%">
-            <input matInput type="text" placeholder="Full name">
+            <input matInput type="text" formControlName="fullName" placeholder="Full name" [errorStateMatcher]="errorStateMatcher">
+            <mat-error *ngIf="form.get('fullName').hasError('required')">
+              Name is required
+            </mat-error>
           </mat-form-field>
           <mat-form-field fxFlex="100%">
-            <input matInput type="text" placeholder="Email">
+            <input matInput type="email" formControlName="email" placeholder="Email" [errorStateMatcher]="errorStateMatcher">
+            <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="form.get('email').hasError('required')">
+              Email is required
+            </mat-error>
           </mat-form-field>
           <mat-form-field fxFlex="100%">
-            <input matInput type="text" placeholder="Password">
+            <input matInput type="password" formControlName="password" placeholder="Password" [errorStateMatcher]="errorStateMatcher">
+            <mat-error *ngIf="form.get('password').hasError('required')">
+              Password is required
+            </mat-error>
           </mat-form-field>
-          <button mat-button type="submit" color="accent">Ok</button>
+          <button mat-raised-button type="submit" color="accent" [disabled]="form.invalid">Sign Up</button>
         </form>
+        <div fxLayout="row" fxLayoutAlign="center">
+          <mat-progress-spinner *ngIf="pending$ | async" fxFlexAlign="center" mode="indeterminate"></mat-progress-spinner>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

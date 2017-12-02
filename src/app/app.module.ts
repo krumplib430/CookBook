@@ -18,6 +18,7 @@ import {RegistrationModule} from './features/registration/registration.module';
 import {RecipeModule} from './features/recipe/recipe.module';
 import {AppComponent} from './features/core/components/app.component';
 import {NotFoundPageComponent} from './features/core/components/not-found-page.component';
+import {RouterEffects} from './router/router.effects';
 
 const routes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
@@ -33,7 +34,7 @@ const routes: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([RouterEffects]),
     StoreRouterConnectingModule,
     StoreDevtoolsModule.instrument({maxAge: 25}),
     CoreModule.forRoot(),

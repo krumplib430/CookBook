@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {State} from '../../../app.state';
+import * as registrationActions from '../registration.actions';
 
 @Component({
   selector: 'cb-registration-page',
@@ -7,10 +10,26 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./registration-page.component.scss'],
 })
 export class RegistrationPageComponent {
-  form: FormGroup = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
+  pending$: Store<boolean>;
+  error$: Store<string>;
+
+  form: FormGroup;
+
+  constructor(private store: Store<State>, private formBuilder: FormBuilder) {
+    this.createForm();
+  }
+
+  createForm() {
+    this.form = this.formBuilder.group({
+      fullName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
+
+  submit() {
+    if (this.form.valid) {
+      this.store.dispatch(new registrationActions.Register(this.form.value));
+    }
+  }
 }

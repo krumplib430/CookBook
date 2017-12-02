@@ -1,11 +1,11 @@
 import {RouterStateSerializer} from '@ngrx/router-store';
 import {RouterStateSnapshot} from '@angular/router';
-import * as appState from '../app.state';
+import * as routerState from '../router/router.state';
 
-export class CustomRouterStateSerializer implements RouterStateSerializer<appState.RouterState> {
-  serialize(routerState: RouterStateSnapshot): appState.RouterState {
-    const url = routerState.url;
-    const queryParams = routerState.root.queryParams;
+export class CustomRouterStateSerializer implements RouterStateSerializer<routerState.RouterState> {
+  serialize(state: RouterStateSnapshot): routerState.RouterState {
+    const url = state.url;
+    const queryParams = state.root.queryParams;
 
     return {url, queryParams};
   }
