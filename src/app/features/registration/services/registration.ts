@@ -12,4 +12,8 @@ export class RegistrationService {
   register(registrationData: registrationModels.RegistrationData) {
     return Observable.fromPromise(this.afAuth.auth.createUserWithEmailAndPassword(registrationData.email, registrationData.password));
   }
+
+  setProfile(profileData: registrationModels.ProfileData) {
+    return Observable.fromPromise(this.afAuth.auth.currentUser.updateProfile({displayName: profileData.fullName, photoURL: null}));
+  }
 }

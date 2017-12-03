@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {State} from '../../../app.state';
 import * as registrationActions from '../registration.actions';
+import * as registrationSelectors from '../registration.selectors';
 
 @Component({
   selector: 'cb-registration-page',
@@ -16,6 +17,9 @@ export class RegistrationPageComponent {
   form: FormGroup;
 
   constructor(private store: Store<State>, private formBuilder: FormBuilder) {
+    this.pending$ = store.select(registrationSelectors.getRegistrationPending);
+    this.error$ = store.select(registrationSelectors.getRegistrationError);
+
     this.createForm();
   }
 

@@ -22,9 +22,6 @@ export class Logout implements Action {
 
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
-
-  constructor(public payload: authModels.UserData) {
-  }
 }
 
 export class LoginFailure implements Action {

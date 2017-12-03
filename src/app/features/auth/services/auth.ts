@@ -13,6 +13,7 @@ export class AuthService {
       if (authState) {
         return {
           uid: authState.uid,
+          fullName: authState.displayName,
           email: authState.email,
         };
       }

@@ -18,6 +18,14 @@ export function reducer(state: authState.AuthState = authState.initialState, act
       };
     }
 
+    case authActions.LOGIN_SUCCESS: {
+      return {
+        ...state,
+        pending: false,
+        error: null,
+      };
+    }
+
     case authActions.LOGIN: {
       return {
         ...state,
@@ -30,16 +38,6 @@ export function reducer(state: authState.AuthState = authState.initialState, act
         ...state,
         user: null,
         loggedIn: false,
-      };
-    }
-
-    case authActions.LOGIN_SUCCESS: {
-      return {
-        ...state,
-        loggedIn: true,
-        user: action.payload,
-        pending: false,
-        error: null,
       };
     }
 

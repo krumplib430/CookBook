@@ -10,6 +10,7 @@ export function reducer(state: registrationState.RegistrationState = registratio
       };
     }
 
+
     case registrationActions.REGISTER_SUCCESS: {
       return {
         ...state,
