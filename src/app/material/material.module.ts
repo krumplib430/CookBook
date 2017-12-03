@@ -7,6 +7,8 @@ import {
   MatFormFieldModule,
   MatToolbarModule,
   MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatListModule,
 } from '@angular/material';
 
 const COMPONENTS = [
@@ -17,6 +19,8 @@ const COMPONENTS = [
   MatFormFieldModule,
   MatToolbarModule,
   MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatListModule,
 ];
 
 @NgModule({

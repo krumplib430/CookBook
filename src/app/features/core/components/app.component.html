@@ -1,10 +1,28 @@
-<mat-toolbar *ngIf="loggedIn$ | async" color="primary">
-  <span>Cook Book</span>
-  <button mat-button>Sign-up</button>
-</mat-toolbar>
-<div>
-  <button *ngIf="loggedIn$ | async" type="button" (click)="logout()" >Logout</button>
+<div *ngIf="loggedIn$ | async; else notLoggedIn" class="cb-main-container">
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="cb-toolbar-title">Cook Book</h1>
+    <span class="cb-toolbar-spacer"></span>
+    <button mat-button type="button" (click)="logout()">Logout</button>
+  </mat-toolbar>
+  <mat-sidenav-container class="cb-sidenav-container">
+    <mat-sidenav #sidenav class="cb-sidenav" opened mode="side">
+      <mat-nav-list class="cb-nav-list">
+        <mat-list-item>
+          <mat-icon>child_care</mat-icon>
+          <a routerlink="/recipes">My Recipes</a>
+        </mat-list-item>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
-<div>
+<ng-template #notLoggedIn>
   <router-outlet></router-outlet>
-</div>
+</ng-template>
+
