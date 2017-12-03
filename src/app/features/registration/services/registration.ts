@@ -5,7 +5,6 @@ import * as registrationModels from '../registration.models';
 
 @Injectable()
 export class RegistrationService {
-
   constructor(private afAuth: AngularFireAuth) {
   }
 
@@ -14,6 +13,9 @@ export class RegistrationService {
   }
 
   setProfile(profileData: registrationModels.ProfileData) {
-    return Observable.fromPromise(this.afAuth.auth.currentUser.updateProfile({displayName: profileData.fullName, photoURL: null}));
+    return Observable.fromPromise(this.afAuth.auth.currentUser.updateProfile({
+      displayName: profileData.fullName,
+      photoURL: null
+    }));
   }
 }
