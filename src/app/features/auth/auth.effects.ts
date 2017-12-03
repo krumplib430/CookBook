@@ -46,7 +46,7 @@ export class AuthEffects {
       .map(() => new authActions.LoginSuccess())
       .catch(error => of(new authActions.LoginFailure(error.message))));
 
-  @Effect({dispatch: false})
+  @Effect()
   loginSuccess$ = this.actions$
     .ofType(authActions.LOGIN_SUCCESS)
     .map(() => new authActions.CheckLoginState());
