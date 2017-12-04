@@ -19,9 +19,7 @@ export class RegistrationEffects {
     .debounceTime(800)
     .map((action: registrationActions.Register) => action.payload)
     .exhaustMap((payload: registrationModels.RegistrationData) => this.registrationService.register(payload)
-      .map(() => {
-        return new registrationActions.SetProfile({fullName: payload.fullName});
-      })
+      .map(() => new registrationActions.SetProfile({fullName: payload.fullName}))
       .catch(error => of(new registrationActions.RegisterFailure(error.message))));
 
   @Effect()
@@ -30,12 +28,12 @@ export class RegistrationEffects {
     .map((action: registrationActions.Register) => action.payload)
     .exhaustMap((payload: registrationModels.ProfileData) => this.registrationService.setProfile(payload)
       .map(() => new registrationActions.RegisterSuccess())
-      .catch(error => of(new registrationActions.RegisterFailure(error.message))));
+      .catch(error => of(new registrationActions.SetProfileFailure(error.message))));
 
   @Effect()
   registerSuccess$ = this.actions$
     .ofType(registrationActions.REGISTER_SUCCESS)
-    .map(() => new authActions.CheckLoginState());
+    .map(() => new authActions.GetUserState());
 
   constructor(private actions$: Actions, private registrationService: RegistrationService) {
   }

@@ -5,11 +5,11 @@
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
 
-  .top-div {
+  .cb-login-top-div {
     background-color: mat-color($primary);
   }
 
-  .form-error {
+  .cb-login-form-error {
     color: mat-color($warn);
   }
 }

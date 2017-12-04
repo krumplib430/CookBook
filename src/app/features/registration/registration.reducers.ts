@@ -10,7 +10,6 @@ export function reducer(state: registrationState.RegistrationState = registratio
       };
     }
 
-
     case registrationActions.REGISTER_SUCCESS: {
       return {
         ...state,
@@ -20,6 +19,14 @@ export function reducer(state: registrationState.RegistrationState = registratio
     }
 
     case registrationActions.REGISTER_FAILURE: {
+      return {
+        ...state,
+        pending: false,
+        error: action.payload,
+      };
+    }
+
+    case registrationActions.SET_PROFILE_FAILURE: {
       return {
         ...state,
         pending: false,

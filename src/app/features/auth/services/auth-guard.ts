@@ -1,16 +1,16 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {AuthService} from './auth';
 import {State} from '../../../app.state';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
-import * as authActions from '../auth.actions';
+
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private store: Store<State>, private authService: AuthService) {
+  constructor(private store: Store<State>, private authService: AuthService, private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       .first()
       .map(authenticated => {
         if (!authenticated) {
-          this.store.dispatch(new authActions.LoginRedirect());
+          this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}});
           return false;
         }
         return true;

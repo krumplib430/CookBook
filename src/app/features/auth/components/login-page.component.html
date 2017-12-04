@@ -1,16 +1,15 @@
-<div class="top-div"></div>
-
+<div class="cb-login-top-div"></div>
 <div fxLayout="row" fxLayoutAlign="center">
-  <div class="card" fxFlex="40%" fxFlex.lt-md="90%">
+  <div class="cb-login-card" fxFlex="40%" fxFlex.lt-md="90%">
     <mat-card>
       <mat-card-title>Please Login</mat-card-title>
       <mat-card-subtitle *ngIf="error$ | async">
-        <p class="form-error">{{ error$ | async }}</p>
+        <p class="cb-login-form-error">{{ error$ | async }}</p>
       </mat-card-subtitle>
       <mat-card-content>
         <form *ngIf="!(pending$ | async)" [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="10px">
           <mat-form-field fxFlex="100%">
-            <input matInput type="email" formControlName="email" placeholder="Email" [errorStateMatcher]="errorStateMatcher">
+            <input matInput type="email" formControlName="email" placeholder="Email">
             <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
               Please enter a valid email address
             </mat-error>
@@ -19,13 +18,13 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field fxFlex="100%">
-            <input matInput type="password" formControlName="password" placeholder="Password" [errorStateMatcher]="errorStateMatcher">
+            <input matInput type="password" formControlName="password" placeholder="Password">
             <mat-error *ngIf="form.get('password').hasError('required')">
               Password is required
             </mat-error>
           </mat-form-field>
           <button mat-raised-button type="submit" color="accent" [disabled]="form.invalid">Login</button>
-          <button mat-button type="button" color="primary" (click)="signUp()">Sign-up</button>
+          <button mat-button type="button" color="primary" routerLink="/register" queryParamsHandling="merge">Sign-up</button>
         </form>
         <div fxLayout="row" fxLayoutAlign="center">
           <mat-progress-spinner *ngIf="pending$ | async" fxFlexAlign="center" mode="indeterminate"></mat-progress-spinner>

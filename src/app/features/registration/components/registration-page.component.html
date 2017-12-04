@@ -1,22 +1,21 @@
-<div class="top-div"></div>
-
+<div class="cb-registration-top-div"></div>
 <div fxLayout="row" fxLayoutAlign="center">
-  <div class="card" fxFlex="40%" fxFlex.lt-md="90%">
+  <div class="cb-registration-card" fxFlex="40%" fxFlex.lt-md="90%">
     <mat-card>
       <mat-card-title>Register</mat-card-title>
       <mat-card-subtitle *ngIf="error$ | async">
-        <p class="form-error">{{ error$ | async }}</p>
+        <p class="cb-registration-form-error">{{ error$ | async }}</p>
       </mat-card-subtitle>
       <mat-card-content>
         <form *ngIf="!(pending$ | async)" [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="10px">
           <mat-form-field fxFlex="100%">
-            <input matInput type="text" formControlName="fullName" placeholder="Full name" [errorStateMatcher]="errorStateMatcher">
+            <input matInput type="text" formControlName="fullName" placeholder="Full name">
             <mat-error *ngIf="form.get('fullName').hasError('required')">
               Name is required
             </mat-error>
           </mat-form-field>
           <mat-form-field fxFlex="100%">
-            <input matInput type="email" formControlName="email" placeholder="Email" [errorStateMatcher]="errorStateMatcher">
+            <input matInput type="email" formControlName="email" placeholder="Email">
             <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
               Please enter a valid email address
             </mat-error>
@@ -25,7 +24,7 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field fxFlex="100%">
-            <input matInput type="password" formControlName="password" placeholder="Password" [errorStateMatcher]="errorStateMatcher">
+            <input matInput type="password" formControlName="password" placeholder="Password">
             <mat-error *ngIf="form.get('password').hasError('required')">
               Password is required
             </mat-error>

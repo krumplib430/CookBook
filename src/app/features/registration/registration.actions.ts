@@ -2,21 +2,15 @@ import {Action} from '@ngrx/store';
 import * as registrationModels from './registration.models';
 
 export const REGISTER = '[Registration] Register';
-export const SET_PROFILE = '[Registration] Set Profile'
 export const REGISTER_SUCCESS = '[Registration] Register Success';
 export const REGISTER_FAILURE = '[Registration] Register Failure';
+export const SET_PROFILE = '[Registration] Set Profile'
+export const SET_PROFILE_FAILURE = '[Registration] Set Profile Failure'
 
 export class Register implements Action {
   readonly type = REGISTER;
 
   constructor(public payload: registrationModels.RegistrationData) {
-  }
-}
-
-export class SetProfile implements Action {
-  readonly type = SET_PROFILE;
-
-  constructor(public payload: registrationModels.ProfileData) {
   }
 }
 
@@ -31,8 +25,23 @@ export class RegisterFailure implements Action {
   }
 }
 
+export class SetProfile implements Action {
+  readonly type = SET_PROFILE;
+
+  constructor(public payload: registrationModels.ProfileData) {
+  }
+}
+
+export class SetProfileFailure implements Action {
+  readonly type = SET_PROFILE_FAILURE;
+
+  constructor(public payload: string) {
+  }
+}
+
 export type Actions =
   | Register
   | RegisterSuccess
   | RegisterFailure
-  | SetProfile;
+  | SetProfile
+  | SetProfileFailure;
