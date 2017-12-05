@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(new authActions.GetUserState());
+    this.store.dispatch(new authActions.GetUser());
   }
 
   logout() {

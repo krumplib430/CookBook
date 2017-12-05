@@ -16,8 +16,8 @@ import * as authModels from './auth.models';
 @Injectable()
 export class AuthEffects {
   @Effect()
-  getUserState$ = this.actions$
-    .ofType(authActions.GET_USER_STATE)
+  getUser$ = this.actions$
+    .ofType(authActions.GET_USER)
     .switchMap(() => this.authService.userData$
       .map(userData => new authActions.SetUserState(userData)));
 

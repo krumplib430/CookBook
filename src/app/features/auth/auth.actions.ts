@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 import * as authModels from './auth.models';
 
-export const GET_USER_STATE = '[Auth] Get User State';
+export const GET_USER = '[Auth] Get User';
 export const SET_USER_STATE = '[Auth] Set User State';
 export const INIT_LOGIN_FORM = '[Auth] Init Login Form';
 export const LOGIN = '[Auth] Login';
@@ -9,8 +9,8 @@ export const LOGIN_SUCCESS = '[Auth] Login Success';
 export const LOGIN_FAILURE = '[Auth] Login Failure';
 export const LOGOUT = '[Auth] Logout';
 
-export class GetUserState implements Action {
-  readonly type = GET_USER_STATE;
+export class GetUser implements Action {
+  readonly type = GET_USER;
 }
 
 export class SetUserState implements Action {
@@ -47,7 +47,7 @@ export class Logout implements Action {
 }
 
 export type Actions =
-  | GetUserState
+  | GetUser
   | SetUserState
   | InitLoginForm
   | Login

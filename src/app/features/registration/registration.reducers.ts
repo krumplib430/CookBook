@@ -11,14 +11,14 @@ export function reducer(state: registrationState.RegistrationState = registratio
       };
     }
 
-    case registrationActions.REGISTER: {
+    case registrationActions.CREATE_USER: {
       return {
         ...state,
         pending: true,
       };
     }
 
-    case registrationActions.REGISTER_SUCCESS: {
+    case registrationActions.REGISTRATION_SUCCESS: {
       return {
         ...state,
         pending: false,
@@ -26,7 +26,7 @@ export function reducer(state: registrationState.RegistrationState = registratio
       };
     }
 
-    case registrationActions.REGISTER_FAILURE: {
+    case registrationActions.CREATE_USER_FAILURE: {
       return {
         ...state,
         pending: false,

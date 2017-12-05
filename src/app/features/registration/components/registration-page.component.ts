@@ -37,7 +37,7 @@ export class RegistrationPageComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this.store.dispatch(new registrationActions.Register(this.form.value));
+      this.store.dispatch(new registrationActions.CreateUser(this.form.value));
     }
   }
 }
