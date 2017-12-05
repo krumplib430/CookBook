@@ -6,4 +6,4 @@ export interface RecipeState {
 
 export const initialState: RecipeState = {
   recipes: [],
-}
+};
