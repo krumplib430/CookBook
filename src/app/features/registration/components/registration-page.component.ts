@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {State} from '../../../app.state';
@@ -10,7 +10,7 @@ import * as registrationSelectors from '../registration.selectors';
   templateUrl: './registration-page.component.html',
   styleUrls: ['./registration-page.component.scss'],
 })
-export class RegistrationPageComponent {
+export class RegistrationPageComponent implements OnInit {
   pending$: Store<boolean>;
   error$: Store<string>;
 
@@ -21,6 +21,10 @@ export class RegistrationPageComponent {
     this.error$ = store.select(registrationSelectors.getRegistrationError);
 
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(new registrationActions.InitRegistrationForm());
   }
 
   createForm() {

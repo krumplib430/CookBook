@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, NgForm, FormControl, FormGroupDirective} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {Store} from '@ngrx/store';
@@ -11,7 +11,7 @@ import * as authSelectors from '../auth.selectors';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit{
   pending$: Store<boolean>;
   error$: Store<string>;
 
@@ -22,6 +22,10 @@ export class LoginPageComponent {
     this.error$ = store.select(authSelectors.getAuthError);
 
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(new authActions.InitLoginForm());
   }
 
   createForm() {

@@ -18,6 +18,14 @@ export function reducer(state: authState.AuthState = authState.initialState, act
       };
     }
 
+    case authActions.INIT_LOGIN_FORM: {
+      return {
+        ...state,
+        pending: false,
+        error: null,
+      };
+    }
+
     case authActions.LOGIN: {
       return {
         ...state,
