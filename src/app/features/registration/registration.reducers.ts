@@ -1,7 +1,7 @@
 import * as registrationActions from './registration.actions';
 import * as registrationState from './registration.state';
 
-export function reducer(state: registrationState.RegistrationState = registrationState.initialState, action: registrationActions.Actions) {
+export function reducer(state: registrationState.RegistrationState = registrationState.initialState, action: registrationActions.Actions): registrationState.RegistrationState {
   switch (action.type) {
     case registrationActions.INIT_REGISTRATION_FORM: {
       return {

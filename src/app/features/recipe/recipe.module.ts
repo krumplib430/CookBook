@@ -3,7 +3,9 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
-import {RecipeListComponent} from './containers/recipe-list.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MaterialModule} from '../../material/material.module';
+import {RecipeListComponent} from './components/recipe-list.component';
 import {AuthGuard} from '../auth/services/auth-guard';
 import {RecipeService} from './services/recipe';
 import {RecipeEffects} from './recipe.effects';
@@ -21,6 +23,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     StoreModule.forFeature('recipe', recipeReducers.reducer),
     EffectsModule.forFeature([RecipeEffects]),
+    MaterialModule,
+    FlexLayoutModule,
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,

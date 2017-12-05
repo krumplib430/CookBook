@@ -1,7 +1,7 @@
 import * as authActions from './auth.actions';
 import * as authState from './auth.state';
 
-export function reducer(state: authState.AuthState = authState.initialState, action: authActions.Actions) {
+export function reducer(state: authState.AuthState = authState.initialState, action: authActions.Actions): authState.AuthState {
   switch (action.type) {
     case authActions.SET_USER_STATE: {
       if (action.payload) {
