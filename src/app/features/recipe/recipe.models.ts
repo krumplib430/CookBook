@@ -5,6 +5,7 @@ export interface Recipe {
   imageUrl: string;
   ingredients: string[];
   steps: RecipeStep[];
+  shared: false;
 }
 
 export interface RecipeStep {

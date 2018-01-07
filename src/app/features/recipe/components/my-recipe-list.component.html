@@ -4,8 +4,9 @@
       <mat-grid-tile-header>
         {{recipe.name}}
       </mat-grid-tile-header>
-      <mat-grid-tile-footer>
+      <mat-grid-tile-footer class="cb-grid-list-item-footer">
         <button mat-button>OPEN</button>
+        <mat-slide-toggle [checked]="recipe.shared">SHARE</mat-slide-toggle>
       </mat-grid-tile-footer>
       <div class="cb-gris-list-item" fxFlex="100%" fxLayout="column">
         <img fxFlex="65%" src="{{recipe.imageUrl}}" alt="{{recipe.name}}">

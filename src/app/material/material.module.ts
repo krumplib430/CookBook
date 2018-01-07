@@ -10,6 +10,7 @@ import {
   MatSidenavModule,
   MatListModule,
   MatGridListModule,
+  MatSlideToggleModule,
 } from '@angular/material';
 
 const COMPONENTS = [
@@ -23,6 +24,7 @@ const COMPONENTS = [
   MatSidenavModule,
   MatListModule,
   MatGridListModule,
+  MatSlideToggleModule,
 ];
 
 @NgModule({

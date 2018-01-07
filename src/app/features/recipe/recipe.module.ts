@@ -6,15 +6,21 @@ import {EffectsModule} from '@ngrx/effects';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from '../../material/material.module';
 import {RecipeListComponent} from './components/recipe-list.component';
+import {MyRecipeListComponent} from './components/my-recipe-list.component';
 import {AuthGuard} from '../auth/services/auth-guard';
 import {RecipeService} from './services/recipe';
 import {RecipeEffects} from './recipe.effects';
 import * as recipeReducers from './recipe.reducers';
 
-const COMPONENTS = [RecipeListComponent];
+
+const COMPONENTS = [
+  RecipeListComponent,
+  MyRecipeListComponent
+];
 
 const routes: Routes = [
-  {path: 'recipes', component: RecipeListComponent, canActivate: [AuthGuard]}
+  {path: 'recipes', component: RecipeListComponent, canActivate: [AuthGuard]},
+  {path: 'my-recipes', component: MyRecipeListComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

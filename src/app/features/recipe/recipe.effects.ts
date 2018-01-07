@@ -12,6 +12,12 @@ export class RecipeEffects {
     .switchMap(() => this.recipeService.recipes$
       .map(recipeList => new recipeActions.SetRecipeListState(recipeList)));
 
+  @Effect()
+  getMyRecipeList$ = this.actions$
+    .ofType(recipeActions.GET_MY_RECIPE_LIST)
+    .switchMap(() => this.recipeService.authUserRecipes$
+      .map(recipeList => new recipeActions.SetMyRecipeListState(recipeList)));
+
   constructor(private actions$: Actions, private recipeService: RecipeService) {
 
   }

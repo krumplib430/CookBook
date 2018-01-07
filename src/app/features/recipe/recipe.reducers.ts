@@ -11,6 +11,14 @@ export function reducer(state: recipeState.RecipeState = recipeState.initialStat
       };
     }
 
+    case recipeActions.SET_MY_RECIPE_LIST_STATE: {
+      console.log('got the my-recipes', action.payload);
+      return {
+        ...state,
+        myRecipes: action.payload
+      };
+    }
+
     default: {
       return state;
     }
