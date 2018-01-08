@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="10px">
+  <mat-form-field fxFlex="100%">
+    <input matInput type="text" formControlName="recipeName" placeholder="Recipe name">
+    <mat-error *ngIf="form.get('recipeName').hasError('required')">
+      Recipe name is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field fxFlex="100%">
+    <textarea matInput placeholder="Description" formControlName="description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+    <mat-error *ngIf="form.get('description').hasError('required')">
+      Description is required
+    </mat-error>
+  </mat-form-field>
+  <label>
+    <input type="file" (change)="detectFiles($event)">
+  </label>
+  Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+  <div *ngIf="currentUpload?.url">
+    <img src="{{currentUpload?.url}}" >
+  </div>
+  <button mat-button type="submit" color="accent" [disabled]="form.invalid">Add</button>
+</form>

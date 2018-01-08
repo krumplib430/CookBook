@@ -10,19 +10,18 @@
   <mat-sidenav-container class="cb-sidenav-container">
     <mat-sidenav #sidenav class="cb-sidenav" opened mode="side">
       <mat-nav-list class="cb-nav-list">
-        <mat-list-item>
+        <mat-list-item routerLink="/recipes" routerLinkActive="cb-active">
           <mat-icon>kitchen</mat-icon>
-          <a routerLink="/recipes">Public Recipes</a>
+          <a>Public Recipes</a>
         </mat-list-item>
-        <mat-list-item>
+        <mat-list-item routerLink="/my-recipes" routerLinkActive="cb-active">
           <mat-icon>child_care</mat-icon>
-          <a routerLink="/my-recipes">My Recipes</a>
+          <a>My Recipes</a>
         </mat-list-item>
-        <mat-list-item>
+        <mat-list-item routerLink="/add-recipe" routerLinkActive="cb-active">
           <mat-icon>add_circle_outline</mat-icon>
-          <a routerLink="/add-recipes">Add Recipe</a>
+          <a>Add Recipe</a>
         </mat-list-item>
-
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

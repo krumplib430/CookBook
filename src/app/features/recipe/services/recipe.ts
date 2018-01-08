@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import {of} from 'rxjs/observable/of';
 import {AuthService} from '../../auth/services/auth';
+import * as recipeModels from '../recipe.models';
 
 @Injectable()
 export class RecipeService {
@@ -30,5 +31,9 @@ export class RecipeService {
 
   get authUserRecipes$(): Observable<any> {
     return this._authUserRecipes$;
+  }
+
+  addRecipe(recipe: recipeModels.Recipe) {
+    console.log(recipe);
   }
 }

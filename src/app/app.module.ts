@@ -19,9 +19,10 @@ import {RecipeModule} from './features/recipe/recipe.module';
 import {AppComponent} from './features/core/components/app.component';
 import {NotFoundPageComponent} from './features/core/components/not-found-page.component';
 import {RouterEffects} from './router/router.effects';
+import { AddRecipeComponent } from './features/recipe/components/add-recipe.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/recipes', pathMatch: 'full'},
+  {path: '', redirectTo: '/my-recipes', pathMatch: 'full'},
   {path: '**', component: NotFoundPageComponent},
 ];
 
