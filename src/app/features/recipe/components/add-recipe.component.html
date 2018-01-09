@@ -20,12 +20,12 @@
   </div>
   <button (click)="uploadImage()">Upload image</button>
 
-  <div formArrayName="ingredients" *ngFor="let ingredient of form.get('ingredients').controls">
+  <div formArrayName="ingredients" *ngFor="let ingredient of formIngredients.controls">
       <input [formControl]="ingredient" placeholder="Add ingredient here">
   </div>
   <button (click)="addIngredient()">Add ingredient</button>
 
-  <div formArrayName="steps" *ngFor="let step of form.get('steps').controls">
+  <div formArrayName="steps" *ngFor="let step of formSteps.controls">
     <input [formControl]="step" placeholder="Add step description here">
   </div>
   <button (click)="addStep()">Add step</button>

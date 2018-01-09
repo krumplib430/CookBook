@@ -33,6 +33,9 @@ export class AddRecipeComponent implements OnInit {
     this.createForm();
   }
 
+  get formIngredients() { return <FormArray>this.form.get('ingredients'); }
+  get formSteps() { return <FormArray>this.form.get('steps'); }
+
   ngOnInit() {
   }
 
