@@ -14,11 +14,18 @@ export class RecipeService {
 
 
   constructor(private afDatabase: AngularFireDatabase, private authService: AuthService) {
-    this._recipes$ = afDatabase.list('recipes', ref => ref.orderByChild('name')).valueChanges();
+    this._recipes$ = afDatabase.list('recipes', ref => ref.orderByChild('name'))
+      .snapshotChanges().map(actions => {
+        return actions.map(action => ({key: action.key, ...action.payload.val()}));
+      });
+
+
     this._authUserRecipes$ = authService.userData$.switchMap(userData => {
       if (userData) {
         const url = 'users/' + userData.uid + '/recipes';
-        return afDatabase.list(url, ref => ref.orderByChild('name')).valueChanges();
+        return afDatabase.list(url, ref => ref.orderByChild('name')).snapshotChanges().map(actions => {
+          return actions.map(action => ({key: action.key, ...action.payload.val()}));
+        });
       } else {
         return of([]);
       }
@@ -35,5 +42,7 @@ export class RecipeService {
 
   addRecipe(recipe: recipeModels.Recipe) {
     console.log(recipe);
+
+
   }
 }

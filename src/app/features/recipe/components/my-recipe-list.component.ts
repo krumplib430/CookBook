@@ -21,4 +21,7 @@ export class MyRecipeListComponent implements OnInit {
     this.store.dispatch(new recipeActions.GetMyRecipeList());
   }
 
+  shareToggled(event) {
+    console.log('salala', event);
+  }
 }

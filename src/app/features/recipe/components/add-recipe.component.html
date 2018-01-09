@@ -1,7 +1,7 @@
-<form [formGroup]="form" (ngSubmit)="submit()" fxLayout="column" fxLayoutGap="10px">
+<form [formGroup]="form" fxLayout="column" fxLayoutGap="10px">
   <mat-form-field fxFlex="100%">
-    <input matInput type="text" formControlName="recipeName" placeholder="Recipe name">
-    <mat-error *ngIf="form.get('recipeName').hasError('required')">
+    <input matInput type="text" formControlName="name" placeholder="Recipe name">
+    <mat-error *ngIf="form.get('name').hasError('required')">
       Recipe name is required
     </mat-error>
   </mat-form-field>
@@ -18,5 +18,17 @@
   <div *ngIf="currentUpload?.url">
     <img src="{{currentUpload?.url}}" >
   </div>
-  <button mat-button type="submit" color="accent" [disabled]="form.invalid">Add</button>
+  <button (click)="uploadImage()">Upload image</button>
+
+  <div formArrayName="ingredients" *ngFor="let ingredient of form.get('ingredients').controls">
+      <input [formControl]="ingredient" placeholder="Add ingredient here">
+  </div>
+  <button (click)="addIngredient()">Add ingredient</button>
+
+  <div formArrayName="steps" *ngFor="let step of form.get('steps').controls">
+    <input [formControl]="step" placeholder="Add step description here">
+  </div>
+  <button (click)="addStep()">Add step</button>
+
+  <button mat-button color="accent" (click)="submit()" [disabled]="form.invalid">save</button>
 </form>

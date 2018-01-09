@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 import * as authModels from '../auth.models';
 
 
 @Injectable()
 export class AuthService {
+  private _userData: authModels.UserData
   private _userData$: Observable<authModels.UserData>;
 
   constructor(private afAuth: AngularFireAuth) {
@@ -21,8 +23,12 @@ export class AuthService {
     });
   }
 
+  get userData(): authModels.UserData {
+    return this._userData;
+  }
+
   get userData$(): Observable<authModels.UserData> {
-    return this._userData$;
+    return this._userData$.do(userData => this._userData = userData);
   }
 
   get authenticated$(): Observable<boolean> {

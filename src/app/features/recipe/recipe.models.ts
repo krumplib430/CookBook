@@ -1,13 +1,9 @@
 export interface Recipe {
-  id: string;
+  key: string;
   name: string;
   description: string;
   imageUrl: string;
   ingredients: string[];
-  steps: RecipeStep[];
+  steps: string[];
   shared: false;
-}
-
-export interface RecipeStep {
-  instruction: string;
 }
