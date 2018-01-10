@@ -51,7 +51,7 @@ export class AddRecipeComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: ['https://firebasestorage.googleapis.com/v0/b/cookbook-222b6.appspot.com/o/generic_food2.jpg?alt=media&token=25a9e208-5055-4a46-b98b-4de0ccbd6047'],
+      imageUrl: ['https://firebasestorage.googleapis.com/v0/b/cookbook-222b6.appspot.com/o/generic_food3.jpg?alt=media&token=bbef0e6b-cae3-4d7d-80b7-ba32d11290cb'],
       ingredients: this.formBuilder.array([]),
       steps: this.formBuilder.array([]),
       shared: [false]

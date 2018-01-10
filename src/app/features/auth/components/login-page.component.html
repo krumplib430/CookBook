@@ -1,7 +1,7 @@
 <div class="cb-login-top-div"></div>
 <div fxLayout="row" fxLayoutAlign="center">
   <div class="cb-login-card" fxFlex="40%" fxFlex.lt-md="90%">
-    <mat-card>
+    <mat-card class="cb-card mat-elevation-z10">
       <mat-card-title>Please Login</mat-card-title>
       <mat-card-subtitle *ngIf="error$ | async">
         <p class="cb-login-form-error">{{ error$ | async }}</p>

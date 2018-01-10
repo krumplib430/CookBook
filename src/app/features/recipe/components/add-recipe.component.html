@@ -1,7 +1,7 @@
 <form [formGroup]="form" fxLayout="column" fxLayoutGap="10px" style="margin: 20px">
-  <div fxLayout="row">
-    <div fxFlex="50%" fxLayout="column" fxLayoutGap="20px">
-      <mat-card class="cb-card">
+  <div fxLayout="row" fxLayoutGap="20px">
+    <div fxFlex="65%" fxLayout="column" fxLayoutGap="20px">
+      <mat-card class="cb-card mat-elevation-z10">
         <mat-card-title>Recipe Data</mat-card-title>
         <mat-card-content fxLayout="column" fxLayoutGap="10px">
           <mat-form-field>
@@ -21,39 +21,28 @@
           </mat-form-field>
         </mat-card-content>
       </mat-card>
-      <mat-card class="cb-card">
+    </div>
+    <div fxFlex="35%">
+      <mat-card class="cb-card mat-elevation-z10">
         <mat-card-title>Image</mat-card-title>
         <mat-card-content fxLayout="column" fxLayoutGap="10px">
-          <div>
-            <img src="{{form.get('imageUrl').value}}" style="width: 100%; max-height: 300px">
+          <img src="{{form.get('imageUrl').value}}" style="width: 100%; border: 2px solid grey;">
+          <div fxLayout="row">
+            <input fxFlex type="file" (change)="detectFiles($event)">
+            <p>Progress: {{uploadFileName}} | {{uploadProgress}}% Complete</p>
           </div>
-          <input type="file" (change)="detectFiles($event)">
-          <p>Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete</p>
           <button mat-button (click)="uploadImage()">Upload image</button>
         </mat-card-content>
       </mat-card>
     </div>
-    <div fxFlex="50%">
-    </div>
   </div>
-  <!--<label>-->
-  <!--<input type="file" (change)="detectFiles($event)">-->
-  <!--</label>-->
-  <!--Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete-->
-  <!--<div *ngIf="currentUpload?.url">-->
-  <!--<img src="{{currentUpload?.url}}">-->
-  <!--</div>-->
-  <!--<button (click)="uploadImage()">Upload image</button>-->
-
   <div formArrayName="ingredients" *ngFor="let ingredient of formIngredients.controls">
     <input [formControl]="ingredient" placeholder="Add ingredient here">
   </div>
   <button (click)="addIngredient()">Add ingredient</button>
-
   <div formArrayName="steps" *ngFor="let step of formSteps.controls">
     <input [formControl]="step" placeholder="Add step description here">
   </div>
   <button (click)="addStep()">Add step</button>
-
   <button mat-button color="accent" (click)="submit()" [disabled]="form.invalid">save</button>
 </form>
