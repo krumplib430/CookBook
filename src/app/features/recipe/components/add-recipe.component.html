@@ -1,27 +1,52 @@
-<form [formGroup]="form" fxLayout="column" fxLayoutGap="10px">
-  <mat-form-field fxFlex="100%">
-    <input matInput type="text" formControlName="name" placeholder="Recipe name">
-    <mat-error *ngIf="form.get('name').hasError('required')">
-      Recipe name is required
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field fxFlex="100%">
-    <textarea matInput placeholder="Description" formControlName="description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
-    <mat-error *ngIf="form.get('description').hasError('required')">
-      Description is required
-    </mat-error>
-  </mat-form-field>
-  <label>
-    <input type="file" (change)="detectFiles($event)">
-  </label>
-  Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
-  <div *ngIf="currentUpload?.url">
-    <img src="{{currentUpload?.url}}" >
+<form [formGroup]="form" fxLayout="column" fxLayoutGap="10px" style="margin: 20px">
+  <div fxLayout="row">
+    <div fxFlex="50%" fxLayout="column" fxLayoutGap="20px">
+      <mat-card class="cb-card">
+        <mat-card-title>Recipe Data</mat-card-title>
+        <mat-card-content fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input matInput type="text" formControlName="name" placeholder="Name">
+            <mat-hint align="end">{{form.get('name').value.length}} / 50</mat-hint>
+            <mat-error *ngIf="form.get('name').hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+          <textarea matInput placeholder="Description" formControlName="description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5">
+          </textarea>
+            <mat-hint align="end">{{form.get('description').value.length}} / 500</mat-hint>
+            <mat-error *ngIf="form.get('description').hasError('required')">
+              Description is required
+            </mat-error>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="cb-card">
+        <mat-card-title>Image</mat-card-title>
+        <mat-card-content fxLayout="column" fxLayoutGap="10px">
+          <div>
+            <img src="{{form.get('imageUrl').value}}" style="width: 100%; max-height: 300px">
+          </div>
+          <input type="file" (change)="detectFiles($event)">
+          <p>Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete</p>
+          <button mat-button (click)="uploadImage()">Upload image</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxFlex="50%">
+    </div>
   </div>
-  <button (click)="uploadImage()">Upload image</button>
+  <!--<label>-->
+  <!--<input type="file" (change)="detectFiles($event)">-->
+  <!--</label>-->
+  <!--Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete-->
+  <!--<div *ngIf="currentUpload?.url">-->
+  <!--<img src="{{currentUpload?.url}}">-->
+  <!--</div>-->
+  <!--<button (click)="uploadImage()">Upload image</button>-->
 
   <div formArrayName="ingredients" *ngFor="let ingredient of formIngredients.controls">
-      <input [formControl]="ingredient" placeholder="Add ingredient here">
+    <input [formControl]="ingredient" placeholder="Add ingredient here">
   </div>
   <button (click)="addIngredient()">Add ingredient</button>
 

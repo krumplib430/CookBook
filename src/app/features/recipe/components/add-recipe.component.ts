@@ -5,18 +5,18 @@ import {AuthService} from '../../auth/services/auth';
 import * as firebase from 'firebase';
 
 
-export class Upload {
-  $key: string;
-  file: File;
-  name: string;
-  url: string;
-  progress: number;
-  createdAt: Date = new Date();
-
-  constructor(file: File) {
-    this.file = file;
-  }
-}
+// export class Upload {
+//   $key: string;
+//   file: File;
+//   name: string;
+//   url: string;
+//   progress: number;
+//   createdAt: Date = new Date();
+//
+//   constructor(file: File) {
+//     this.file = file;
+//   }
+// }
 
 
 @Component({
@@ -27,14 +27,22 @@ export class Upload {
 export class AddRecipeComponent implements OnInit {
   form: FormGroup;
   selectedFiles: FileList;
-  currentUpload: Upload;
+  uploadProgress: number;
+  uploadFileName: string;
+
+  // currentUpload: Upload;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private afDatabase: AngularFireDatabase) {
     this.createForm();
   }
 
-  get formIngredients() { return <FormArray>this.form.get('ingredients'); }
-  get formSteps() { return <FormArray>this.form.get('steps'); }
+  get formIngredients() {
+    return <FormArray>this.form.get('ingredients');
+  }
+
+  get formSteps() {
+    return <FormArray>this.form.get('steps');
+  }
 
   ngOnInit() {
   }
@@ -43,7 +51,7 @@ export class AddRecipeComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      imageUrl: [''],
+      imageUrl: ['https://firebasestorage.googleapis.com/v0/b/cookbook-222b6.appspot.com/o/generic_food2.jpg?alt=media&token=25a9e208-5055-4a46-b98b-4de0ccbd6047'],
       ingredients: this.formBuilder.array([]),
       steps: this.formBuilder.array([]),
       shared: [false]
@@ -73,8 +81,8 @@ export class AddRecipeComponent implements OnInit {
   }
 
   uploadImage() {
-    const file = this.selectedFiles.item(0)
-    this.currentUpload = new Upload(file);
+    const file = this.selectedFiles.item(0);
+    this.uploadFileName = file.name;
 
 
     const storageRef = firebase.storage().ref();
@@ -84,8 +92,8 @@ export class AddRecipeComponent implements OnInit {
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot: firebase.storage.UploadTaskSnapshot) => {
         // upload in progress
-        const snap = snapshot;
-        this.currentUpload.progress = (snap.bytesTransferred / snap.totalBytes) * 100;
+        // const snap = snapshot;
+        this.uploadProgress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       },
       (error) => {
         // upload failed
@@ -95,10 +103,7 @@ export class AddRecipeComponent implements OnInit {
         // upload success
         if (uploadTask.snapshot.downloadURL) {
           this.form.get('imageUrl').setValue(uploadTask.snapshot.downloadURL);
-          this.currentUpload.url = uploadTask.snapshot.downloadURL;
-          this.currentUpload.name = this.currentUpload.file.name;
-          console.log(this.currentUpload);
-          // this.saveFileData(upload);
+          this.uploadFileName = file.name;
           return;
         } else {
           console.error('No download URL!');
