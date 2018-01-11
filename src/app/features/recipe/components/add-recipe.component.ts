@@ -4,21 +4,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 import {AuthService} from '../../auth/services/auth';
 import * as firebase from 'firebase';
 
-
-// export class Upload {
-//   $key: string;
-//   file: File;
-//   name: string;
-//   url: string;
-//   progress: number;
-//   createdAt: Date = new Date();
-//
-//   constructor(file: File) {
-//     this.file = file;
-//   }
-// }
-
-
+// Refactor the this thing redux implementation
 @Component({
   selector: 'cb-add-recipe',
   templateUrl: './add-recipe.component.html',
@@ -63,9 +49,19 @@ export class AddRecipeComponent implements OnInit {
     items.push(new FormControl('', Validators.required));
   }
 
+  removeIngredient(index) {
+    const items = this.form.get('ingredients') as FormArray;
+    items.removeAt(index);
+  }
+
   addStep(): void {
     const items = this.form.get('steps') as FormArray;
     items.push(new FormControl('', Validators.required));
+  }
+
+  removeStep(index) {
+    const items = this.form.get('steps') as FormArray;
+    items.removeAt(index);
   }
 
   submit() {
