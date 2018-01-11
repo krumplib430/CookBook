@@ -11,7 +11,7 @@ import {Recipe} from '../recipe.models';
   styleUrls: ['./my-recipe.component.scss']
 })
 export class MyRecipeComponent {
-  recipe$: Observable<Recipe>;
+  recipe$: Observable<any>;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private afDatabase: AngularFireDatabase) {
     this.recipe$ = this.afDatabase.object('users/' + this.authService.userData.uid + '/recipes/' + this.route.snapshot.paramMap.get('id')).valueChanges();
