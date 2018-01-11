@@ -11,6 +11,7 @@ import {
   MatListModule,
   MatGridListModule,
   MatSlideToggleModule,
+  MatStepperModule,
 } from '@angular/material';
 
 const COMPONENTS = [
@@ -25,6 +26,7 @@ const COMPONENTS = [
   MatListModule,
   MatGridListModule,
   MatSlideToggleModule,
+  MatStepperModule,
 ];
 
 @NgModule({

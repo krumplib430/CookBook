@@ -5,7 +5,7 @@
         {{recipe.name}}
       </mat-grid-tile-header>
       <mat-grid-tile-footer class="cb-grid-list-item-footer">
-        <button mat-button>OPEN</button>
+        <button mat-button [routerLink]="['/my-recipes', recipe.key]">OPEN</button>
         <mat-slide-toggle [checked]="recipe.shared" (change)="shareToggled($event, recipe)" >SHARE</mat-slide-toggle>
       </mat-grid-tile-footer>
       <div class="cb-gris-list-item" fxFlex="100%" fxLayout="column">

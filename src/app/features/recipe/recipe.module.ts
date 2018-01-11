@@ -9,6 +9,7 @@ import {MaterialModule} from '../../material/material.module';
 import {RecipeListComponent} from './components/recipe-list.component';
 import {MyRecipeListComponent} from './components/my-recipe-list.component';
 import {AddRecipeComponent} from './components/add-recipe.component';
+import {MyRecipeComponent} from './components/my-recipe.component';
 import {AuthGuard} from '../auth/services/auth-guard';
 import {RecipeService} from './services/recipe';
 import {RecipeEffects} from './recipe.effects';
@@ -18,10 +19,12 @@ const COMPONENTS = [
   RecipeListComponent,
   MyRecipeListComponent,
   AddRecipeComponent,
+  MyRecipeComponent,
 ];
 
 const routes: Routes = [
   {path: 'recipes', component: RecipeListComponent, canActivate: [AuthGuard]},
+  {path: 'my-recipes/:id', component: MyRecipeComponent, canActivate: [AuthGuard]},
   {path: 'my-recipes', component: MyRecipeListComponent, canActivate: [AuthGuard]},
   {path: 'add-recipe', component: AddRecipeComponent, canActivate: [AuthGuard]},
 ];
