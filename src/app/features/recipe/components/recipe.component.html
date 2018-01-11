@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayoutGap="20px" *ngIf="recipe$ | async; let recipe" style="margin: 20px">
+  <div fxFlex="65%" fxLayout="column" fxLayoutGap="20px">
+    <mat-card class="cb-card mat-elevation-z10">
+      <mat-card-title>{{recipe.name}}</mat-card-title>
+      <mat-card-content fxLayout="column" fxLayoutGap="10px">
+        <p>{{recipe.description}}</p>
+      </mat-card-content>
+    </mat-card>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-card fxFlex="60%" class="cb-card mat-elevation-z10" fxLayout="column">
+        <mat-card-title>Steps</mat-card-title>
+        <mat-vertical-stepper [linear]="true" style="background-color: #fffbec;">
+          <mat-step *ngFor="let step of recipe.steps">
+            <ng-template matStepLabel>{{step}}</ng-template>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Bon Appétit!</ng-template>
+          </mat-step>
+        </mat-vertical-stepper>
+
+      </mat-card>
+      <mat-card fxFlex="40%" class="cb-card mat-elevation-z10" fxLayout="column">
+        <mat-card-title>Ingredients</mat-card-title>
+        <p *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</p>
+      </mat-card>
+    </div>
+  </div>
+  <div fxFlex="35%">
+    <mat-card class="cb-card mat-elevation-z10">
+      <mat-card-content fxLayout="column" fxLayoutGap="10px">
+        <img src="{{recipe.imageUrl}}" style="width: 100%; border: 2px solid grey;">
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

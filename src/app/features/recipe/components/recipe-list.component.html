@@ -3,9 +3,10 @@
     <mat-grid-tile *ngFor="let recipe of recipeList$ | async" class="mat-elevation-z10">
       <mat-grid-tile-header>
         {{recipe.name}}
+        {{recipe.key}}
       </mat-grid-tile-header>
       <mat-grid-tile-footer>
-        <button mat-button>OPEN</button>
+        <button mat-button [routerLink]="['/recipes', recipe.key]">OPEN</button>
       </mat-grid-tile-footer>
       <div class="cb-gris-list-item" fxFlex="100%" fxLayout="column">
         <img fxFlex="65%" src="{{recipe.imageUrl}}" alt="{{recipe.name}}">

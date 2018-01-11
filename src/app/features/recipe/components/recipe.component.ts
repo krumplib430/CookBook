@@ -4,16 +4,15 @@ import {AuthService} from '../../auth/services/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 
-
 @Component({
-  selector: 'cb-my-recipe',
-  templateUrl: './my-recipe.component.html',
-  styleUrls: ['./my-recipe.component.scss']
+  selector: 'cb-recipe',
+  templateUrl: './recipe.component.html',
+  styleUrls: ['./recipe.component.scss']
 })
-export class MyRecipeComponent {
+export class RecipeComponent {
   recipe$: Observable<any>;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private afDatabase: AngularFireDatabase) {
-    this.recipe$ = this.afDatabase.object('users/' + this.authService.userData.uid + '/recipes/' + this.route.snapshot.paramMap.get('id')).valueChanges();
+    this.recipe$ = this.afDatabase.object('recipes/' + this.route.snapshot.paramMap.get('id')).valueChanges();
   }
 }
