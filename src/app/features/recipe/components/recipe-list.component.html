@@ -3,7 +3,6 @@
     <mat-grid-tile *ngFor="let recipe of recipeList$ | async" class="mat-elevation-z10">
       <mat-grid-tile-header>
         {{recipe.name}}
-        {{recipe.key}}
       </mat-grid-tile-header>
       <mat-grid-tile-footer>
         <button mat-button [routerLink]="['/recipes', recipe.key]">OPEN</button>

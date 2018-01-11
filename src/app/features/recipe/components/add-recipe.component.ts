@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AuthService} from '../../auth/services/auth';
 import * as firebase from 'firebase';
@@ -18,7 +19,7 @@ export class AddRecipeComponent implements OnInit {
 
   // currentUpload: Upload;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private afDatabase: AngularFireDatabase) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private afDatabase: AngularFireDatabase, private router: Router) {
     this.createForm();
   }
 
@@ -68,7 +69,7 @@ export class AddRecipeComponent implements OnInit {
     if (this.form.valid) {
       const url = 'users/' + this.authService.userData.uid + '/recipes';
       const itemsRef = this.afDatabase.list(url);
-      itemsRef.push(this.form.value);
+      itemsRef.push(this.form.value).then(() => this.router.navigate(['/my-recipes']));
     }
   }
 
